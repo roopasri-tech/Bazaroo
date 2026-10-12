@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: bazaaro-mobile-web
+    runtime: static
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm web:build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /product/*
+        destination: /
+      - type: rewrite
+        source: /store/*
+        destination: /
